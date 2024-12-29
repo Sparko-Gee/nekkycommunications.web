@@ -1,207 +1,220 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Log in or Sing up.</title>
-     <link rel="icon" type="image/x-icon" href="images/NOVA.png">
-<style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Log in or Sign up</title>
+    <link rel="icon" type="image/x-icon" href="images/NOVA.png">
+    <style>
+        body {
+            background-color: seagreen;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-head>
-	body {
-    background-color: seagreen;
-  }
-</style>
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
 
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
+        button {
+            background-color: #04AA6D;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
 
-/* Set a style for all buttons */
-button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
+        button:hover {
+            opacity: 0.8;
+        }
 
-button:hover {
-  opacity: 0.8;
-}
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
 
-/* Extra styles for the cancel button */
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+            position: relative;
+        }
 
-/* Center the image and position the close button */
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-  position: relative;
-}
+        img.avatar {
+            width: 40%;
+            border-radius: 50%;
+        }
 
-img.images_NOVA.png {
-  width: 40%;
-  border-radius: 50%;
-}
+        .container {
+            padding: 16px;
+        }
 
-.container {
-  padding: 16px;
-}
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
 
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
 
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
+        .modal-content {
+            background-color: black;
+            margin: 5% auto 15% auto;
+            border: 1px solid #888;
+            width: 80%;
+        }
 
-/* Modal Content/Box */
-.modal-content {
-  background-color: black;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
 
-/* The Close Button (x) */
-.close {
-  position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold;
-}
+        .close:hover,
+        .close:focus {
+            color: red;
+            cursor: pointer;
+        }
 
-.close:hover,
-.close:focus {
-  color: red;
-  cursor: pointer;
-}
+        .animate {
+            -webkit-animation: animatezoom 0.9s;
+            animation: animatezoom 0.9s
+        }
 
-/* Add Zoom Animation */
-.animate {
-  -webkit-animation: animatezoom 0.9s;
-  animation: animatezoom 0.9s
-} 
+        @-webkit-keyframes animatezoom {
+            from {-webkit-transform: scale(0)}
+            to {-webkit-transform: scale(1)}
+        }
 
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-  
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
-}
+        @keyframes animatezoom {
+            from {transform: scale(0)}
+            to {transform: scale(1)}
+        }
 
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
-}
-</style>
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+
+        body {
+            background-image: url('images/Introduction page/Welcome to Nekky Communications.png');
+            background-repeat: no-repeat;
+            background-blend-mode: darken;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
-<style> body {
-    background-color: seagreen;
-  }
-body {
-  background-image: url('images/Introduction page/Welcome to Nekky Communications.png'); 
-  background-repeat:no-repeat;
-  background-blend-mode: darken;
-  background-attachment: fixed;
-  background-size: cover;
-}
-</style>
-<h2 style=" text-align: center; color: khaki; background-color: black; border-radius: 30%; border-width: 50px; width: 30%; font-family:cursive; font-size:30px">Sign up page</h2>
-<h3 style="color: khaki; font-family:cursive; font-size: 25px;">Welcome to Nekky Communications<br/>Sign up to continue</h3>
+<h2 style="text-align: center; color: khaki; background-color: black; border-radius: 30%; border-width: 50px; width: 30%; font-family: cursive; font-size: 30px">Sign up page</h2>
+<h3 style="color: khaki; font-family: cursive; font-size: 25px;">Welcome to Nekky Communications<br/>Sign up to continue</h3>
 
 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign up</button>
 
 <div id="id01" class="modal">
-  
-  <form class="modal-content animate" action="index.html" method="post">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img style="height: 350px;" src="images/Introduction page/Welcome to Nekky Communications.png" alt="Avatar" class="avatar">
+    <div class="modal-content animate">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img style="height: 250px; width: 50px;" src="images/j2.jpg" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container" style="color: orangered;">
+            <label for="fname"><b>First name</b></label>
+            <input type="text" placeholder="Enter Name" id="fname" required>
+
+            <label for="lname"><b>Last name</b></label>
+            <input type="text" placeholder="Enter Name" id="lname" required>
+
+            <label for="email"><b>Email or Mobile</b></label>
+            <input type="text" placeholder="user@gmail.com/Mobile" id="email" required>
+
+            <label for="pwd"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" id="pwd" required>
+
+            <label for="cpwd"><b>Confirm Password</b></label>
+            <input type="password" placeholder="Confirm Password" id="cpwd" required>
+
+            <button type="button" onclick="signUp()">Sign up</button>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        </div>
     </div>
-
-    <div class="container" style="color: orangered;">
-      <label for="fname"><b>First name</b></label>
-      <input type="text" placeholder="Enter Name" name="fname" required>
-
-      <label for="lname"><b>Last name</b></label>
-      <input type="text" placeholder="Enter Name" name="lname" required>
-       
-      <label for="email"><b>Email or Mobile</b></label>
-      <input type="text" placeholder="user@gmail.com/Mobile" name="email" required>
-
-      <label for="pwd"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="pwd" required>
-      <label for="cpwd"><b>Confirm Password</b></label>
-      <input type="password" placeholder="Confirm Password" name="cpwd" required>
-
-      <button type="submit">Sign up</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-    </div>
-  </form>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script>
-// Get the modal
-var modal = document.getElementById('id01');
+    const supabaseUrl = 'https://chrodyslkpfczjtiazhz.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNocm9keXNsa3BmY3pqdGlhemh6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzM4Mjk5NTUsImV4cCI6MjA0OTQwNTk1NX0.ftKDuy-GjxcGnhn0QMuQoB6U9Gz8kR9EITEikRH61PQ';
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+    async function signUp() {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('pwd').value;
+
+        const { error } = await supabase.auth.signUp({
+            email: email,
+            password: password,
+            options: {
+                data: {
+                    first_name: document.getElementById('fname').value,
+                    last_name: document.getElementById('lname').value
+                }
+            }
+        });
+
+        if (error) {
+            alert('Error: ' + error.message);
+        } else {
+            alert('Sign-up successful!');
+            document.getElementById('id01').style.display = 'none';
+        }
     }
-}
+
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
 </script>
 </body>
 <body>
-<p style="color: black; font-weight:500%;">Already have an account?</p><a href="Log in.html"><em style="color:darkgoldenrod;">Log in.</em></a>
-<p>Or go back to <a href="index.html"><em style="color:darkgoldenrod;">Home</em></a></p>
+<p style="color: black; font-weight:500%;">If you already have an account then</p><a href="Log in.html"><em style="color:darkgoldenrod;">Log in.</em></a>
+<p>Or go back to <a href="index.html"><em style="color:darkgoldenrod;">Home</em></p>
 </body>
 </html>
 
+<p style="color: orangered; font-family: cursive; font-size: larger;">If unable to connect try <a style="color: navajowhite;" href="javascript:diagnoseErrors()" id="diagnose-link" jstcache="0">Running Windows Network Diagnostics</a></p>
